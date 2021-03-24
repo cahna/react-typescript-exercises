@@ -1,7 +1,7 @@
-export interface GithubRepos {
+export interface GithubRepo {
   id: number;
   name: string;
   description: string;
-  full_name: string;
-  html_url: string;
+  fullName: string;
+  htmlUrl: string;
 }

@@ -16,9 +16,9 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
-import { GithubRepos } from "./types";
+import { GithubRepo } from "./types";
 
-const RepoList: FC<{ data?: GithubRepos[] | null }> = ({ data }) => {
+const RepoList: FC<{ data?: GithubRepo[] | null }> = ({ data }) => {
   if (!data) {
     return null;
   }

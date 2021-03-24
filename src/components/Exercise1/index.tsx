@@ -21,21 +21,24 @@
  */
 
 import { Component, SyntheticEvent, ChangeEvent } from "react";
-import axios from "axios";
 import { IconButton, Paper, InputBase } from "@material-ui/core";
 import { withStyles, createStyles, Theme } from "@material-ui/core/styles";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import SearchIcon from "@material-ui/icons/Search";
 
-import RepoList from "./RepoList";
-import { GithubRepos } from "./types";
+import { withGithubClient, InjectedContext } from "components/GithubClient";
 
-type Exercise1Props = { classes: Record<string, string> };
-type Exercise1State = {
+import RepoList from "./RepoList";
+import { GithubRepo } from "./types";
+
+interface Exercise1Props extends InjectedContext {
+  classes: Record<string, string>;
+}
+interface Exercise1State {
   username: string;
   loading: boolean;
-  data: GithubRepos[] | null;
-};
+  data: GithubRepo[] | null;
+}
 
 class Exercise1 extends Component<Exercise1Props, Exercise1State> {
   constructor(props: Exercise1Props) {
@@ -50,8 +53,7 @@ class Exercise1 extends Component<Exercise1Props, Exercise1State> {
   handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
     this.setState({ loading: true });
-    const url = `https://api.github.com/users/${this.state.username}/repos?type=all&sort=updated`;
-    axios.get<GithubRepos[]>(url).then(({ data }) => {
+    this.props.githubClient.getRepos(this.state.username).then(({ data }) => {
       this.setState({
         loading: false,
         data
@@ -125,4 +127,4 @@ const styles = (theme: Theme) =>
   });
 
 // [Question] What is the React term for wrapping a component like this?
-export default withStyles(styles)(Exercise1);
+export default withGithubClient(withStyles(styles)(Exercise1));
