@@ -43,11 +43,10 @@ describe("Exercise2/utils", () => {
       it("returns no updates", () => {
         const inventory: Readonly<InventoryRow[]> = [];
         const duplicateBarcodeRows = {};
-        const [nUpdates, updatedInventory] = updateRowBarcodeErrors(
+        const updatedInventory = updateRowBarcodeErrors(
           inventory,
           duplicateBarcodeRows
         );
-        expect(nUpdates).toBe(0);
         expect(updatedInventory).toBe(inventory);
       });
     });

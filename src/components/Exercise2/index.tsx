@@ -33,14 +33,7 @@ const Exercise2: FC<{}> = () => {
       return;
     }
 
-    const [nUpdates, updatedInventory] = updateRowBarcodeErrors(
-      inventory,
-      duplicateBarcodeRows
-    );
-
-    if (nUpdates > 0) {
-      setInventory(updatedInventory);
-    }
+    setInventory(updateRowBarcodeErrors(inventory, duplicateBarcodeRows));
   }, [inventory]);
 
   const addRow = () =>

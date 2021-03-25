@@ -61,7 +61,7 @@ export const getDuplicateBarcodeRows = (
 export const updateRowBarcodeErrors = (
   inventory: Readonly<InventoryRow[]>,
   duplicateBarcodeRows: Record<string, string[]>
-): [number, Readonly<InventoryRow[]>] => {
+): Readonly<InventoryRow[]> => {
   const updatedInventory = [...inventory];
   let nUpdates = 0;
   Object.entries(duplicateBarcodeRows).forEach(([barcode, rowIds]) => {
@@ -87,5 +87,5 @@ export const updateRowBarcodeErrors = (
       updatedInventory.splice(rowIndex, 1, updatedRow);
     });
   });
-  return [nUpdates, nUpdates > 0 ? updatedInventory : inventory];
+  return nUpdates > 0 ? updatedInventory : inventory;
 };
