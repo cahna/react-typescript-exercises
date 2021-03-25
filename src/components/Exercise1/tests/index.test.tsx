@@ -33,16 +33,6 @@ const makeMockClient = (): IGithubClient => ({
 });
 
 describe("<Exercise1 />", () => {
-  let errorSpy: jest.SpyInstance;
-
-  beforeEach(() => {
-    errorSpy = jest.spyOn(global.console, "error");
-  });
-
-  afterEach(() => {
-    expect(errorSpy).not.toHaveBeenCalled();
-  });
-
   const setupTest = (mockClient: IGithubClient) =>
     render(
       <GithubClientContext.Provider value={mockClient}>

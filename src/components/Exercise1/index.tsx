@@ -22,14 +22,15 @@
 
 import { Component, SyntheticEvent, ChangeEvent } from "react";
 import { IconButton, Paper, InputBase } from "@material-ui/core";
-import { withStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import SearchIcon from "@material-ui/icons/Search";
 
 import { withGithubClient, InjectedContext } from "components/GithubClient";
 
-import RepoList from "./RepoList";
 import { GithubRepo } from "./types";
+import { styles } from "./styles";
+import RepoList from "./RepoList";
 
 interface Exercise1Props extends InjectedContext {
   classes: Record<string, string>;
@@ -101,30 +102,6 @@ class Exercise1 extends Component<Exercise1Props, Exercise1State> {
     );
   }
 }
-
-const styles = (theme: Theme) =>
-  createStyles({
-    root: {
-      width: "100%"
-    },
-    inputRoot: {
-      padding: theme.spacing(2),
-      display: "flex",
-      alignItems: "center",
-      marginBottom: theme.spacing(2)
-    },
-    input: {
-      marginLeft: theme.spacing(1),
-      flex: 1
-    },
-    iconButton: {
-      padding: 10
-    },
-    divider: {
-      height: 28,
-      margin: 4
-    }
-  });
 
 // [Question] What is the React term for wrapping a component like this?
 export default withGithubClient(withStyles(styles)(Exercise1));

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 
+import { GithubClientProvider } from "components/GithubClient";
 import NavBar from "components/NavBar";
 import Home from "components/HomePage";
 import Exercise1 from "components/Exercise1";
@@ -25,7 +26,15 @@ const App: FC<{}> = () => {
           <Grid container item>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/exercises/1" component={Exercise1} />
+              <Route
+                exact
+                path="/exercises/1"
+                render={() => (
+                  <GithubClientProvider>
+                    <Exercise1 />
+                  </GithubClientProvider>
+                )}
+              />
               <Route exact path="/exercises/2" component={Exercise2} />
               <Route render={() => <pre>Error: 404</pre>} />
             </Switch>

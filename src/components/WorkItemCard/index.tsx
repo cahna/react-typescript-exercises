@@ -39,12 +39,13 @@ const WorkItemCard: FC<Props> = ({
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} role="region">
       <CardContent>
         <Typography
           className={classes.title}
           color="textSecondary"
           gutterBottom
+          role="heading"
         >
           {title}
         </Typography>
@@ -54,7 +55,7 @@ const WorkItemCard: FC<Props> = ({
         <Typography className={classes.pos} color="textSecondary">
           {subheader}
         </Typography>
-        <Typography variant="body2" component="p">
+        <Typography variant="body2" component="p" role="contentinfo">
           {content}
         </Typography>
       </CardContent>

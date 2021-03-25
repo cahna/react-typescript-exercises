@@ -30,7 +30,7 @@ const HomePage: FC<{}> = () => {
               component={RouterLink}
               to="/exercises/1"
             >
-              View
+              View Exercise 1
             </Button>
           }
         />
@@ -48,7 +48,7 @@ const HomePage: FC<{}> = () => {
               component={RouterLink}
               to="/exercises/2"
             >
-              View
+              View Exercise 2
             </Button>
           }
         />

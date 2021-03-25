@@ -21,14 +21,14 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const NavBar: FC<{ name: string }> = ({ name }) => {
+const NavBar: FC<{ name?: string }> = ({ name }) => {
   const classes = useStyles();
   const renderName = name ? `: ${name}` : null;
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar role="navigation">
           <IconButton
             component={Link}
             edge="start"
